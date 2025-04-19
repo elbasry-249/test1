@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-cosmic font-body text-slate-100 overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-cosmic-dark;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neon-blue/50 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neon-blue;
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply relative border border-neon-blue/30 rounded-md overflow-hidden;
+  }
+  
+  .neon-border::before {
+    content: '';
+    @apply absolute inset-0 border border-neon-blue/70 rounded-md;
+    box-shadow: 0 0 15px rgba(27, 231, 255, 0.5), inset 0 0 10px rgba(27, 231, 255, 0.3);
+    z-index: -1;
+  }
+  
+  .neon-text {
+    @apply text-neon-blue font-heading animate-glow;
+  }
+  
+  .neon-text-green {
+    @apply text-neon-green font-heading;
+    text-shadow: 0 0 8px rgba(0, 255, 171, 0.8), 0 0 12px rgba(0, 255, 171, 0.5);
+  }
+  
+  .neon-text-purple {
+    @apply text-neon-purple font-heading;
+    text-shadow: 0 0 8px rgba(156, 39, 176, 0.8), 0 0 12px rgba(156, 39, 176, 0.5);
+  }
+  
+  .glass-panel {
+    @apply bg-cosmic-dark/40 backdrop-blur-md border border-white/10 rounded-lg;
+  }
+  
+  .neon-button {
+    @apply px-8 py-3 text-neon-blue bg-transparent border-2 border-neon-blue rounded-md font-heading uppercase tracking-wider 
+    hover:bg-neon-blue/10 hover:shadow-[0_0_15px_rgba(27,231,255,0.5)] transition-all duration-300 animate-pulse-border;
+  }
+  
+  .neon-button-green {
+    @apply px-8 py-3 text-neon-green bg-transparent border-2 border-neon-green rounded-md font-heading uppercase tracking-wider 
+    hover:bg-neon-green/10 hover:shadow-[0_0_15px_rgba(0,255,171,0.5)] transition-all duration-300;
+  }
+  
+  .neon-card {
+    @apply glass-panel p-6 relative transition-all duration-300 hover:shadow-[0_0_25px_rgba(27,231,255,0.25)];
+  }
+  
+  .neon-card::after {
+    content: '';
+    @apply absolute inset-0 border border-neon-blue/30 rounded-lg opacity-0 transition-opacity duration-300;
+    box-shadow: 0 0 15px rgba(27, 231, 255, 0.5);
+  }
+  
+  .neon-card:hover::after {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .clip-trapezoid {
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  }
+}
